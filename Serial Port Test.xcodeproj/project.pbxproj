@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		525A3C2B1D99E79100EF0472 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 525A3C2A1D99E79100EF0472 /* main.cpp */; };
+		524879B51D9B6DD600679D30 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 524879B41D9B6DD600679D30 /* libboost_system-mt.a */; };
+		524879B71D9B6DFB00679D30 /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 524879B61D9B6DFB00679D30 /* libboost_thread-mt.dylib */; };
+		524879B91D9B763400679D30 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 524879B81D9B763400679D30 /* main.cpp */; settings = {ASSET_TAGS = (); }; };
+		525A3C2B1D99E79100EF0472 /* serial.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 525A3C2A1D99E79100EF0472 /* serial.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		524879B41D9B6DD600679D30 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../../../../../opt/local/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
+		524879B61D9B6DFB00679D30 /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../../../../../../opt/local/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
+		524879B81D9B763400679D30 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		525A3C271D99E79100EF0472 /* Serial Port Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Serial Port Test"; sourceTree = BUILT_PRODUCTS_DIR; };
-		525A3C2A1D99E79100EF0472 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		525A3C2A1D99E79100EF0472 /* serial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = serial.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524879B71D9B6DFB00679D30 /* libboost_thread-mt.dylib in Frameworks */,
+				524879B51D9B6DD600679D30 /* libboost_system-mt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +49,8 @@
 		525A3C1E1D99E79100EF0472 = {
 			isa = PBXGroup;
 			children = (
+				524879B61D9B6DFB00679D30 /* libboost_thread-mt.dylib */,
+				524879B41D9B6DD600679D30 /* libboost_system-mt.a */,
 				525A3C291D99E79100EF0472 /* Serial Port Test */,
 				525A3C281D99E79100EF0472 /* Products */,
 			);
@@ -57,7 +67,8 @@
 		525A3C291D99E79100EF0472 /* Serial Port Test */ = {
 			isa = PBXGroup;
 			children = (
-				525A3C2A1D99E79100EF0472 /* main.cpp */,
+				525A3C2A1D99E79100EF0472 /* serial.hpp */,
+				524879B81D9B763400679D30 /* main.cpp */,
 			);
 			path = "Serial Port Test";
 			sourceTree = "<group>";
@@ -118,7 +129,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				525A3C2B1D99E79100EF0472 /* main.cpp in Sources */,
+				524879B91D9B763400679D30 /* main.cpp in Sources */,
+				525A3C2B1D99E79100EF0472 /* serial.hpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +172,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /opt/local/include/;
+				LIBRARY_SEARCH_PATHS = /opt/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -196,6 +210,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -205,6 +220,10 @@
 		525A3C2F1D99E79100EF0472 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -212,6 +231,10 @@
 		525A3C301D99E79100EF0472 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -235,6 +258,7 @@
 				525A3C301D99E79100EF0472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
